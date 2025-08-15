@@ -14,7 +14,7 @@ from matplotlib.backends.backend_agg import FigureCanvasAgg
 req_file = os.path.join(os.path.dirname(__file__), "requirements.txt")
 subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", req_file])
 
-# Creating mapping for 62 classes (digits + uppercase + lowercase)
+# Creating mapping for 62 classes 
 num_to_char = {}
 for i in range(10):
     num_to_char[i] = str(i)
@@ -40,13 +40,13 @@ def pred():
 
         # Display Image
         for widget in image_frame.winfo_children():
-            widget.destroy()  # Clear old image if any
+            widget.destroy()  
         img_color = cv2.cvtColor(image, cv2.COLOR_GRAY2RGB)
         img_pil = Image.fromarray(img_color)
         img_pil.thumbnail((350, 350))
         img_tk = ImageTk.PhotoImage(img_pil)
         img_label = tk.Label(image_frame, image=img_tk)
-        img_label.image = img_tk  # keep reference
+        img_label.image = img_tk 
         img_label.pack()
 
         background_black = False
@@ -71,7 +71,7 @@ def pred():
         fig_count = 0
 
         # Anomaly filter
-        MIN_CONTOUR_AREA = 50  # tweak if needed
+        MIN_CONTOUR_AREA = 50 
 
         for idx, cnt in enumerate(contours):
             if cv2.contourArea(cnt) < MIN_CONTOUR_AREA:
@@ -161,3 +161,4 @@ def appl():
 
     app.mainloop()
 appl()
+
